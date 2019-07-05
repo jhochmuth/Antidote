@@ -1,0 +1,22 @@
+{
+  "name": "YouToxic",
+  "version": "1.0",
+  "description": "An extension that blocks toxic text.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "webRequest",
+    "*://*.youtube.com/*"
+  ],
+  "content_security_policy": "script-src 'self' https://cdn.jsdelivr.net https://code.jquery.com; object-src 'self'",
+  "background": {
+    "page": "background.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["arrive.js", "contentScript.js"]
+    }
+  ],
+  "manifest_version": 2
+}
