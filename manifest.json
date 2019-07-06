@@ -1,7 +1,7 @@
 {
-  "name": "YouToxic",
+  "name": "Antidote",
   "version": "1.0",
-  "description": "An extension that blocks toxic text.",
+  "description": "An extension that blocks toxic youtube comments.",
   "permissions": [
     "storage",
     "activeTab",
@@ -18,5 +18,9 @@
       "js": ["arrive.js", "contentScript.js"]
     }
   ],
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "icons": {"16": "icon.png", "48": "icon.png", "128": "icon.png"},
   "manifest_version": 2
 }
