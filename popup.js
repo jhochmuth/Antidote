@@ -1,11 +1,17 @@
 document.addEventListener("DOMContentLoaded", function() {
-  var threshold;
   const slider = document.getElementById("slider");
-  chrome.storage.local.get(["threshold"], function(result) {
+  const toggle = document.getElementById("toggle");
+
+  chrome.storage.local.get(["threshold", "active"], function(result) {
     slider.value = result.threshold;
+    toggle.checked = result.active;
   });
+
   slider.addEventListener("change", function(element) {
-    threshold = element.target.value;
-    chrome.storage.local.set({threshold: threshold});
+    chrome.storage.local.set({threshold: element.target.value});
+  });
+
+  toggle.addEventListener("change", function(element) {
+    chrome.storage.local.set({active: element.target.checked});
   });
 });

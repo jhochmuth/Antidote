@@ -2,16 +2,19 @@
 <html>
   <head>
     <title>Antidote</title>
-    <style>
-      .slidercontainer {
-        width: 100%;
-      }
-    </style>
+    <link rel="stylesheet" href="popup.css">
     <script src="popup.js"></script>
   </head>
   <body>
     <h1>Settings</h1>
+    <h3>Currently Active</h3>
+    <label class="switch">
+      <input type="checkbox" id="toggle">
+      <span class="slidertoggle round"></span>
+    </label>
     <h3>Sensitivity</h3>
+    <label style="float: left">Low</label>
+    <label style="float: right">High</label>
     <div class="slidercontainer">
       <input type="range" min="0" max="1" step=".01" class="slider" id="slider">
     </div>

@@ -1,19 +1,22 @@
+const debug = true;
+
 document.arrive("ytd-comment-renderer", function() {
   var current = this;
-  var commentText = this.querySelector("#content-text").innerText;
-  var prediction;
-  var threshold;
-  var debug = true;
-  chrome.storage.local.get({threshold: .4}, function(result) {
-    threshold = result.threshold;
-  })
+  var commentText = current.querySelector("#content-text").innerText;
 
-  chrome.runtime.sendMessage({comment: commentText}, function(response) {
-    if (response.prediction > threshold) {
-      if (debug) {
-        console.log(commentText);
-      }
-      current.style.display = "none";
-    };
+  chrome.storage.local.get(["threshold", "active"], function(result) {
+    var threshold = result.threshold;
+    var active = result.active;
+
+    if (active) {
+      chrome.runtime.sendMessage({comment: commentText}, function(response) {
+        if (response.prediction > threshold) {
+          if (debug) {
+            console.log(commentText);
+          }
+          current.style.display = "none";
+        }
+      });
+    }
   });
-})
+});
