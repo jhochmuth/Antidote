@@ -5,11 +5,11 @@ document.arrive("ytd-comment-renderer", function() {
   var commentText = current.querySelector("#content-text").innerText;
 
   chrome.storage.local.get(["threshold", "active"], function(result) {
-    var threshold = result.threshold;
+    var threshold = 1 - result.threshold;
     var active = result.active;
 
     if (active) {
-      chrome.runtime.sendMessage({comment: commentText}, function(response) {
+      chrome.runtime.sendMessage({comment: commentText}, async function(response) {
         if (response.prediction > threshold) {
           if (debug) {
             console.log(commentText);
