@@ -1,4 +1,4 @@
-var toxicityModel, toxicityWordIndices;
+let toxicityModel, toxicityWordIndices;
 // var politicalModel, politicalWordIndices;
 
 chrome.runtime.onInstalled.addListener(async function() {
@@ -23,12 +23,12 @@ chrome.runtime.onInstalled.addListener(async function() {
 });
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  var inputBuffer = tf.buffer([1, 60], "float32");
+  const inputBuffer = tf.buffer([1, 60], "float32");
   request.comment.toLowerCase().split(" ").forEach(function(word, index) {
     wordIndex = toxicityWordIndices[word];
     inputBuffer.set(wordIndex, 0, index);
   });
-  var prediction = toxicityModel.predict(inputBuffer.toTensor()).arraySync()[0][0];
+  let prediction = toxicityModel.predict(inputBuffer.toTensor()).arraySync()[0][0];
   /*
   var inputBuffer = tf.buffer([1, 60], "float32");
   request.comment.toLowerCase().split(" ").forEach(function(word, index) {
