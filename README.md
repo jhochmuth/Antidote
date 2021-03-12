@@ -2,6 +2,8 @@
 Antidote is a browser extension that uses neural network models to block toxic content.
 The extension currently only supports functionality with youtube comments, and it is only available as a chrome extension. More functionality will slowly be added.
 
+NOTE: This extension currently does not work because of the [changes](https://www.chromium.org/Home/chromium-security/extension-content-script-fetches) that Google made in regards to CORS and chrome extensions. 
+
 ## Specifics
 To make predictions of toxicity, a recursive neural network was trained on the Google Toxic Comment dataset. The current model was trained in Python using the Keras framework. This model was then converted to a format useable by Tensorflow.js. When the web extension is installed, the files that hold the saved model parameters are downloaded from Google Cloud Storage. After recreating the model using the saved parameters, the extension is ready to make predictions.
 
