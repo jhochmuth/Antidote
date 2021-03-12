@@ -5,9 +5,10 @@
   "permissions": [
     "storage",
     "declarativeContent",
-    "*://*.youtube.com/*"
+    "*://*.youtube.com/*",
+    "*://onedrive.live.com/*"
   ],
-  "content_security_policy": "script-src 'self' https://cdn.jsdelivr.net https://code.jquery.com; object-src 'self'",
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://cdn.jsdelivr.net https://code.jquery.com; object-src 'self'",
   "background": {
     "page": "background.html"
   },

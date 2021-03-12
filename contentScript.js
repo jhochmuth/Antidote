@@ -12,7 +12,7 @@ document.arrive("ytd-comment-renderer", function() {
       chrome.runtime.sendMessage({comment: commentText}, async function(response) {
         if (response.prediction > threshold) {
           if (debug) {
-            console.log(commentText);
+            console.log(commentText, response.prediction);
           }
           current.style.display = "none";
         }
