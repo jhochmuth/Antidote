@@ -10,10 +10,8 @@ document.arrive("ytd-comment-renderer", function() {
 
     if (active) {
       chrome.runtime.sendMessage({comment: commentText}, async function(response) {
+        console.log(commentText, response.prediction);
         if (response.prediction > threshold) {
-          if (debug) {
-            console.log(commentText, response.prediction);
-          }
           current.style.display = "none";
         }
       });

@@ -15,13 +15,3 @@ async function getToxicityWordIndices() {
   const wordIndices = await $.getJSON(TOXICITY_INDEX_PATH);
   return wordIndices;
 }
-
-async function getPoliticalModel() {
-  const model = await tf.loadLayersModel(POLITICAL_MODEL_PATH);
-  return model;
-}
-
-async function getPoliticalWordIndices() {
-  const wordIndices = await $.getJSON(POLITICAL_INDEX_PATH);
-  return wordIndices;
-}
